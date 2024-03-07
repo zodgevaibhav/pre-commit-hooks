@@ -1,0 +1,6 @@
+-   id: prepare-commit-message
+    name: prepare-commit-message
+    description: Add help in commit message
+    entry: prepare_commit_msg
+    stages: [prepare-commit-message]
+    language: python

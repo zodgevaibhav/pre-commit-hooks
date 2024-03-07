@@ -2,7 +2,7 @@
 
 import os
 import sys
-from common.commit_scope_builder_module import  ConventionalCommitBuilder
+from pre_commit_scripts.common.commit_scope_builder_module import  ConventionalCommitBuilder
 
 
 def main():

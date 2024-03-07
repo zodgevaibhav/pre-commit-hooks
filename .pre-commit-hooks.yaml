@@ -1,6 +1,16 @@
--   id: prepare-commit-message
-    name: prepare-commit-message
+-   id: prepare-commit-msg
+    name: prepare-commit-msg
     description: Add help in commit message
     entry: prepare_commit_msg
-    stages: [prepare-commit-message]
+    stages: [prepare-commit-msg]
     language: python
+- id: pretty-format-java
+  name: Google Java Formatter
+  description: Runs Google Java Formatter over Java source files
+  entry: pretty-format-java
+  language: python
+  types: [java]
+  # this is needed because the hook downloads google-java-formatter and
+  # we don't have yet a nice way of ensuring a single download over multiple runs
+  require_serial: true
+  minimum_pre_commit_version: '1'

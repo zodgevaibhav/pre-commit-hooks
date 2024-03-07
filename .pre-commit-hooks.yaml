@@ -10,6 +10,12 @@
     entry: check_commiter_domain
     stages: [pre-commit]
     language: python
+-   id: check_commit_type_scope
+    name: check_commit_type_scope
+    description: Check commit type and scope is givent correct
+    entry: check_commit_type_scope
+    stages: [commit-msg]
+    language: python
 - id: pretty-format-java
   name: Google Java Formatter
   description: Runs Google Java Formatter over Java source files

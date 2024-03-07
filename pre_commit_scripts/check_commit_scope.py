@@ -102,10 +102,21 @@ class ConventionalPreCommit:
         if self.subject.endswith("."):
             errors.append("Subject line must not end with a period")
 
-        lines = self.body.split("\n")
-        for line in lines:
-            if not line.strip().startswith("#") and len(line) > 72:
-                errors.append("Body line exceeds 72 characters")
+        if type(self.body)==type(None):
+                errors.append("Body seems empty, commit must have body")
+        else:
+            lines = self.body.split("\n")
+            subjectLineCount=0
+            for line in lines:
+                if not line.strip().startswith("#"):
+                    subjectLineCount=subjectLineCount+1
+
+            if subjectLineCount<4:
+                errors.append("Body line should be atleast of 2 line")   
+
+            for line in lines:
+                if not line.strip().startswith("#") and len(line) > 72:
+                    errors.append("Body line exceeds 72 characters"+str(subjectLineCount))
 
         if errors:
             self.exit_with_error("Commit message conventions not followed", "\n".join(errors))
@@ -171,4 +182,4 @@ def main():
     ConventionalPreCommit(args.input)
 
 if __name__ == "__main__":
-   sys.exit(main())
+    sys.exit(main())

@@ -2,7 +2,7 @@ import subprocess
 import sys
 
 def main():
-    domain = "abc.com"
+    domain = "gmail.com"
 
     # Run git config command to get the user email
     result = subprocess.run(["git", "config", "--list"], capture_output=True, text=True)

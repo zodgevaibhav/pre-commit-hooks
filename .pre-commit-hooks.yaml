@@ -4,10 +4,17 @@
     entry: prepare_commit_msg
     stages: [prepare-commit-msg]
     language: python
+-   id: check_commiter_domain
+    name: check_commiter_domain
+    description: Check domain of commiter as per config
+    entry: check_commiter_domain
+    stages: [pre-commit]
+    language: python
 - id: pretty-format-java
   name: Google Java Formatter
   description: Runs Google Java Formatter over Java source files
   entry: pretty-format-java
+  stages: [pre-commit]
   language: python
   types: [java]
   # this is needed because the hook downloads google-java-formatter and
